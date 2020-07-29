@@ -1,0 +1,17 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{%block content%}
+<div class="text-center">
+<h2>See Posts Of Yours And Other Businessmen.</h2>
+<a  class="btn btn-primary" href="{% url 'posts' %}" role="button">View Posts</a>
+<br>
+<br>
+<h2>View/Update Your Profile.</h2>
+<a  class="btn btn-primary" href="{% url 'viewprofile' %}" role="button">View Profile</a>
+</div>
+
+
+
+
+
+{% endblock content %}

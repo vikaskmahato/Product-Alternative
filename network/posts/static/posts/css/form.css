@@ -1,0 +1,10 @@
+.login-form {
+    width: 400px;
+    margin: 50px auto;
+    position: relative;
+    top: 5px;
+}
+.btn {        
+    font-size: 15px;
+    font-weight: bold;
+}

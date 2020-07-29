@@ -1,0 +1,16 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{%block content%}
+<div class="row">
+    <div class="col-sm-5">
+        <img class="img-rounded" src="{{Profile.photo.url}}"  width="304" height="304">
+    </div>
+
+    <div class="col-sm-5">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Update">
+        </form>
+    </div>
+    {% endblock content %}

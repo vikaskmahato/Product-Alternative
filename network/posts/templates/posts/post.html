@@ -1,0 +1,40 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{%block content%}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6">
+            {% for i in posts %}
+            <div class="media border p-3">
+                {% if i.author.photo %}
+                <img src="{{i.author.photo.url}}" alt="Photo" class="mr-3 mt-3 rounded-circle" style="width:60px;">
+                {% endif %}
+                <div class="media-body">
+                  <h4>{{i.author}} <small><i>Posted on {{i.created}}</i></small></h4>
+                  <p>{{i.content}}<br>
+                      {% if i.image %}
+                      <img src="{{i.image.url}}" width="380" height="304">
+                      {% endif %}
+                    </p>      
+                </div>
+              </div>
+              
+            {% endfor %}
+        </div>
+            
+        <div class="col-sm-4 offset-1">
+                <form action="" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    {{form}}
+                    <button type="submit" class="btn btn-success">Add Post</button>
+                </form>
+
+        </div>
+          
+          
+        
+        
+    </div>
+</div>
+
+{% endblock content %}
