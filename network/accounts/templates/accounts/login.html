@@ -4,7 +4,7 @@
 <link rel="stylesheet" href="{% static 'accounts/css/sign.css' %}">
 {%endblock head%}
 {%block content%}
-{{error}}
+<h2 class="text-center">{{error}}</h2>
 <div class="login-form">
     <form action="" method="POST">
         {% csrf_token %}
