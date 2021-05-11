@@ -1,0 +1,60 @@
+{% extends 'accounts/base.html'%}
+{% load static %}
+{%block head%}
+{{block.super}}
+<style>
+    .btnpos{
+        position: absolute;
+        top: 120%;
+        left: 20%; 
+    }
+</style>
+{%endblock head%}
+{%block content%}
+<div class="row">
+    <div class="col-sm-5">
+        <img class="img-rounded" src="{{Profile.photo.url}}"  width="304" height="304">
+
+        <a class="btn btn-primary btnpos"  href="{% url 'profileupdate' %}" role="button">Update Profile</a>
+    </div>
+    <div class="col-sm-6">
+        <table class="table table-striped">
+            <tbody>
+              <tr>
+                <th scope="row">First Name</th>
+                <td>{{Profile.firstname}}</td> 
+              </tr>
+              <tr>
+                <th scope="row">Last Name</th>
+                <td>{{Profile.lastname}}</td> 
+              </tr>
+              <tr>
+                <th scope="row">Email</th>
+                <td>{{Profile.email}}</td> 
+              </tr>
+              <tr>
+                <th scope="row">Description</th>
+                <td>{{Profile.desc}}</td> 
+              </tr>
+              <tr>
+                <th scope="row">Category</th>
+                <td>{{Profile.category}}</td> 
+              </tr>
+              <tr>
+                <th scope="row">Product</th>
+                <td>{{Profile.product}}</td> 
+              </tr>
+              <tr>
+                <th scope="row">Contact Details</th>
+                <td>{{Profile.contact_details}}</td> 
+              </tr>
+            
+            </tbody>
+          </table>
+    </div>
+
+    
+
+
+
+{% endblock content %}    
