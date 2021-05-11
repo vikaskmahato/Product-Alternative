@@ -1,60 +1,48 @@
 {% extends 'accounts/base.html'%}
 {% load static %}
-{%block head%}
-{{block.super}}
-<style>
-    .btnpos{
-        position: absolute;
-        top: 120%;
-        left: 20%; 
-    }
-</style>
+{%block head%}{{block.super}}
+<link rel="stylesheet" href="{% static 'posts/css/form.css' %}">
 {%endblock head%}
 {%block content%}
-<div class="row">
-    <div class="col-sm-5">
-        <img class="img-rounded" src="{{Profile.photo.url}}"  width="304" height="304">
 
-        <a class="btn btn-primary btnpos"  href="{% url 'profileupdate' %}" role="button">Update Profile</a>
-    </div>
-    <div class="col-sm-6">
-        <table class="table table-striped">
+<h2 class="text-center">Search for the category of the product.</h2> 
+<div class="login-form">
+<form class="form-inline" action="" method="POST">
+    {% csrf_token %}
+      <div class="form-group" >
+         {{sform}}   
+      </div>
+   <div class="form-group">
+       <button type="submit" class="btn btn-primary btn-block">Search</button>
+    </div>   
+</form>
+</div>
+{% if Profiles %}
+        <table class="table table-hover">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Product</th>
+              </tr>
+            </thead>
             <tbody>
+                {% for i in Profiles %}
               <tr>
-                <th scope="row">First Name</th>
-                <td>{{Profile.firstname}}</td> 
+                <td>{{i.user.username}}</td>
+                <td>{{i.product}}</td>
+                <td>
+                    <a href="{% url 'visitprofile' i.id %}" class="btn btn-success ">Visit Profile</a>
+                </td>
               </tr>
-              <tr>
-                <th scope="row">Last Name</th>
-                <td>{{Profile.lastname}}</td> 
-              </tr>
-              <tr>
-                <th scope="row">Email</th>
-                <td>{{Profile.email}}</td> 
-              </tr>
-              <tr>
-                <th scope="row">Description</th>
-                <td>{{Profile.desc}}</td> 
-              </tr>
-              <tr>
-                <th scope="row">Category</th>
-                <td>{{Profile.category}}</td> 
-              </tr>
-              <tr>
-                <th scope="row">Product</th>
-                <td>{{Profile.product}}</td> 
-              </tr>
-              <tr>
-                <th scope="row">Contact Details</th>
-                <td>{{Profile.contact_details}}</td> 
-              </tr>
-            
+              {% endfor %}
             </tbody>
           </table>
-    </div>
+          
 
-    
+        {% else %}
+        <h4 class="alert alert-warning">No Records</h4>
+    {% endif %}
 
 
 
-{% endblock content %}    
+{% endblock content %}
