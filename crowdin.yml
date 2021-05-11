@@ -1,0 +1,3 @@
+files:
+  - source: /network/accounts/templates/accounts
+    translation: /translations/%two_letters_code%.%file_extension%
