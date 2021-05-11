@@ -1,48 +1,31 @@
 {% extends 'accounts/base.html'%}
 {% load static %}
 {%block head%}{{block.super}}
-<link rel="stylesheet" href="{% static 'posts/css/form.css' %}">
+<link rel="stylesheet" href="{% static 'accounts/css/sign.css' %}">
 {%endblock head%}
 {%block content%}
-
-<h2 class="text-center">Search for the category of the product.</h2> 
+{{error}}
 <div class="login-form">
-<form class="form-inline" action="" method="POST">
-    {% csrf_token %}
-      <div class="form-group" >
-         {{sform}}   
-      </div>
-   <div class="form-group">
-       <button type="submit" class="btn btn-primary btn-block">Search</button>
-    </div>   
-</form>
+    
+    <form action="" method="POST">
+        {% csrf_token %}
+        <h2 class="text-center">SignUp</h2>       
+        <div class="form-group" >
+            
+                {{form1.as_p}}
+            
+        
+        </div>
+  
+       <div class="form-group">
+           <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </div>
+            
+        
+    </form>
 </div>
-{% if Profiles %}
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Product</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for i in Profiles %}
-              <tr>
-                <td>{{i.user.username}}</td>
-                <td>{{i.product}}</td>
-                <td>
-                    <a href="{% url 'visitprofile' i.id %}" class="btn btn-success ">Visit Profile</a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          
-
-        {% else %}
-        <h4 class="alert alert-warning">No Records</h4>
-    {% endif %}
 
 
+    
 
-{% endblock content %}
+{%endblock content%}
