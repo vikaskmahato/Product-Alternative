@@ -1,48 +1,16 @@
 {% extends 'accounts/base.html'%}
 {% load static %}
-{%block head%}{{block.super}}
-<link rel="stylesheet" href="{% static 'posts/css/form.css' %}">
-{%endblock head%}
 {%block content%}
+<div class="row">
+    <div class="col-sm-5">
+        <img class="img-rounded" src="{{Profile.photo.url}}"  width="304" height="304">
+    </div>
 
-<h2 class="text-center">Search for the category of the product.</h2> 
-<div class="login-form">
-<form class="form-inline" action="" method="POST">
-    {% csrf_token %}
-      <div class="form-group" >
-         {{sform}}   
-      </div>
-   <div class="form-group">
-       <button type="submit" class="btn btn-primary btn-block">Search</button>
-    </div>   
-</form>
-</div>
-{% if Profiles %}
-        <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Name</th>
-                <th scope="col">Product</th>
-              </tr>
-            </thead>
-            <tbody>
-                {% for i in Profiles %}
-              <tr>
-                <td>{{i.user.username}}</td>
-                <td>{{i.product}}</td>
-                <td>
-                    <a href="{% url 'visitprofile' i.id %}" class="btn btn-success ">Visit Profile</a>
-                </td>
-              </tr>
-              {% endfor %}
-            </tbody>
-          </table>
-          
-
-        {% else %}
-        <h4 class="alert alert-warning">No Records</h4>
-    {% endif %}
-
-
-
-{% endblock content %}
+    <div class="col-sm-5">
+        <form action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{form.as_p}}
+            <input type="submit" class="btn btn-success" value="Update">
+        </form>
+    </div>
+    {% endblock content %}
