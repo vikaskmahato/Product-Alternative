@@ -1,45 +1,60 @@
 {% extends 'accounts/base.html'%}
 {% load static %}
+{%block head%}
+{{block.super}}
+<style>
+    .btnpos{
+        position: absolute;
+        top: 120%;
+        left: 20%; 
+    }
+</style>
+{%endblock head%}
 {%block content%}
-{% for i in VProf %}
 <div class="row">
     <div class="col-sm-5">
-        <img class="img-rounded" src="{{i.photo.url}}"  width="304" height="304">
+        <img class="img-rounded" src="{{Profile.photo.url}}"  width="304" height="304">
+
+        <a class="btn btn-primary btnpos"  href="{% url 'profileupdate' %}" role="button">Update Profile</a>
     </div>
     <div class="col-sm-6">
         <table class="table table-striped">
             <tbody>
               <tr>
                 <th scope="row">First Name</th>
-                <td>{{i.firstname}}</td> 
+                <td>{{Profile.firstname}}</td> 
               </tr>
               <tr>
                 <th scope="row">Last Name</th>
-                <td>{{i.lastname}}</td> 
+                <td>{{Profile.lastname}}</td> 
               </tr>
               <tr>
                 <th scope="row">Email</th>
-                <td>{{i.email}}</td> 
+                <td>{{Profile.email}}</td> 
               </tr>
               <tr>
                 <th scope="row">Description</th>
-                <td>{{i.desc}}</td> 
+                <td>{{Profile.desc}}</td> 
               </tr>
               <tr>
                 <th scope="row">Category</th>
-                <td>{{i.category}}</td> 
+                <td>{{Profile.category}}</td> 
               </tr>
               <tr>
                 <th scope="row">Product</th>
-                <td>{{i.product}}</td> 
+                <td>{{Profile.product}}</td> 
               </tr>
               <tr>
                 <th scope="row">Contact Details</th>
-                <td>{{i.contact_details}}</td> 
+                <td>{{Profile.contact_details}}</td> 
               </tr>
             
             </tbody>
           </table>
     </div>
-{% endfor %}
-{% endblock content %}
+
+    
+
+
+
+{% endblock content %}    
