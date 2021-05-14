@@ -1,28 +1,17 @@
 {% extends 'accounts/base.html'%}
 {% load static %}
-{%block head%}{{block.super}}
-<style>
-    .btn {     
-        width: 200px;   
-        font-size: 15px;
-}
-</style>
-{%endblock head%}
 {%block content%}
-<h1 class="text-center">WELCOME TO THE SITE !</h1>
-<br>
-<br>
 <div class="text-center">
-<h2 class="text-center">If you are a customer you can go search for the products and the corresponding businessmen.</h2>
-<a class="btn btn-primary" href="{% url 'search' %}" role="button">Search</a>
-</div>
+<h2>See Posts Of Yours And Other Businessmen.</h2>
+<a  class="btn btn-primary" href="{% url 'posts' %}" role="button">View Posts</a>
 <br>
-{% if not user.is_authenticated %}
-<div class="text-center">
-<h2 class="text-center">If you are a businessman login to see posts/update your profile .</h2>
-<a class="btn btn-primary" href="{% url 'login' %}" role="button">Login</a>
+<br>
+<h2>View/Update Your Profile.</h2>
+<a  class="btn btn-primary" href="{% url 'viewprofile' %}" role="button">View Profile</a>
 </div>
-{% endif %}
+
+
+
 
 
 {% endblock content %}
