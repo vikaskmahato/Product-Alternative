@@ -1,28 +1,28 @@
-{%extends 'accounts/base.html'%}
-{%load static%}
+{% extends 'accounts/base.html'%}
+{% load static %}
 {%block head%}{{block.super}}
-<link rel="stylesheet" href="{% static 'accounts/css/sign.css' %}">
+<style>
+    .btn {     
+        width: 200px;   
+        font-size: 15px;
+}
+</style>
 {%endblock head%}
 {%block content%}
-<h2 class="text-center">{{error}}</h2>
-<div class="login-form">
-    <form action="" method="POST">
-        {% csrf_token %}
-        <h2 class="text-center">Login</h2>       
-        <div class="form-group" >
-            
-                {{form2.as_p}}
-            
-        </div>
-       <div class="form-group">
-           <button type="submit" class="btn btn-primary btn-block">Login</button>
-        </div>
-            
-        
-    </form>
+<h1 class="text-center">BIENVENUE SUR LE SITE !</h1>
+<br>
+<br>
+<div class="text-center">
+<h2 class="text-center">Si vous êtes client vous pouvez aller chercher les produits et les hommes d'affaires correspondants.</h2>
+<a class="btn btn-primary" href="{% url 'search' %}" role="button">Chercher</a>
 </div>
+<br>
+{% if not user.is_authenticated %}
+<div class="text-center">
+<h2 class="text-center">Si vous êtes un homme d'affaires, connectez-vous pour voir les publications/mettre à jour votre profil .</h2>
+<a class="btn btn-primary" href="{% url 'login' %}" role="button">Connexion</a>
+</div>
+{% endif %}
 
 
-    
-
-{%endblock content%}
+{% endblock content %}
